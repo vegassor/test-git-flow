@@ -1,6 +1,7 @@
 import json
 
 data = {
-    'mon': 1,
-    'tue': 2,
+    'mon': 2,
+    'tue': 3,
+    'wed': 4,
 }
