@@ -7,7 +7,6 @@ data = {
     'wed': 4,
     'thu': 5,
     'fri': 6,
-    'sat': 7,
 }
 
 print("JSON:")
