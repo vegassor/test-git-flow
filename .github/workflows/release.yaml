@@ -1,0 +1,35 @@
+name: Check Release Target Commit
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  verify-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout master branch
+        uses: actions/checkout@v2
+        with:
+          ref: 'master'
+      
+      - name: Boba
+        run: |
+          echo ${{fromJSON(github)}}
+
+      - name: Get latest commit in master
+        id: get-latest-commit
+        run: |
+          latest_commit=$(git rev-parse HEAD)
+          echo "::set-output name=latest_commit::$latest_commit"
+
+      - name: Compare commit SHA with release target
+        run: |
+          target_commit=${{ github.event.release.target_commitish }}
+          latest_commit=${{ steps.get-latest-commit.outputs.latest_commit }}
+          if [[ "$target_commit" != "$latest_commit" ]]; then
+            echo "Error: Release target commit is not the latest commit in master branch" >&2
+            exit 1
+          fi
