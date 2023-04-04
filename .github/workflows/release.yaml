@@ -17,7 +17,7 @@ jobs:
       
       - name: Boba
         run: |
-          echo ${{fromJSON(github)}}
+          echo '${{fromJSON(github)}}'
 
       - name: Get latest commit in master
         id: get-latest-commit
