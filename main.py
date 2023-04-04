@@ -6,6 +6,7 @@ data = {
     'tue': 3,
     'wed': 4,
     'thu': 5,
+    'fri': 6,
 }
 
 print(json.dumps(data, indent=2))
