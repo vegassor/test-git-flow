@@ -1,6 +1,7 @@
 name: Check Release Target Commit
 
 on:
+  push:
   release:
     types:
       - created
@@ -16,8 +17,7 @@ jobs:
           ref: 'master'
       
       - name: Boba
-        run: |
-          echo '${{fromJSON(github)}}'
+        run: echo '${{ toJSON(github) }}'
 
       - name: Get latest commit in master
         id: get-latest-commit
