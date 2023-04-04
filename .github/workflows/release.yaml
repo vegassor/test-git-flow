@@ -16,7 +16,9 @@ jobs:
           ref: 'master'
 
       - name: Dump github context for debug
-        run: echo '${{ toJSON(github) }}'
+        env: 
+          context: ${{ toJSON(github) }}
+        run: echo "${context}"
 
       - name: Get latest commit in master
         id: get-latest-commit
