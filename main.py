@@ -8,4 +8,5 @@ data = {
     'thu': 5,
 }
 
+print("JSON:")
 print(json.dumps(data, indent=2))
