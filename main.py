@@ -7,3 +7,5 @@ data = {
     'wed': 4,
     'thu': 5,
 }
+
+print(json.dumps(data, indent=2))
