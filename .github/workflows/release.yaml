@@ -29,7 +29,7 @@ jobs:
         run: |
           master_sha=${{steps.get-latest-commit.outputs.latest_commit}}
           current_sha=${{github.sha}}
-          echo "::error ::Latest commit in master branch (${master_sha}) does not match current commit (${current_sha})"
+          echo "::error ::Latest commit in master branch (${master_sha}) does not match commit chosen for release (${current_sha})"
           exit 1
 
       - name: Compare commit SHA with release target
