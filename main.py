@@ -7,8 +7,9 @@ data = {
     'wed': 4,
     'thu': 5,
     'fri': 6,
-    'sat': 7,
+    'sat': 0,
 }
 
 print("JSON:")
+print("-----")
 print(json.dumps(data, indent=2))
