@@ -12,4 +12,4 @@ data = {
 
 print("JSON:")
 print("-----")
-print(json.dumps(data, indent=2))
+print(json.dumps(data, indent=4))
