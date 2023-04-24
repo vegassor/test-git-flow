@@ -1,0 +1,112 @@
+[
+    {
+        "ref": "refs/tags/master-1",
+        "node_id": "REF_kwDOJQBAz7JyZWZzL3RhZ3MvbWFzdGVyLTE",
+        "url": "https://api.github.com/repos/vegassor/test-git-flow/git/refs/tags/master-1",
+        "object": {
+            "sha": "83663b73f9101282fe4558ff819f67f41ca0cba1",
+            "type": "commit",
+            "url": "https://api.github.com/repos/vegassor/test-git-flow/git/commits/83663b73f9101282fe4558ff819f67f41ca0cba1"
+        }
+    },
+    {
+        "ref": "refs/tags/master-2",
+        "node_id": "REF_kwDOJQBAz7JyZWZzL3RhZ3MvbWFzdGVyLTI",
+        "url": "https://api.github.com/repos/vegassor/test-git-flow/git/refs/tags/master-2",
+        "object": {
+            "sha": "0c4d038ace543f5627ef3f05d616f85cbe47d27f",
+            "type": "commit",
+            "url": "https://api.github.com/repos/vegassor/test-git-flow/git/commits/0c4d038ace543f5627ef3f05d616f85cbe47d27f"
+        }
+    },
+    {
+        "ref": "refs/tags/master-3",
+        "node_id": "REF_kwDOJQBAz7JyZWZzL3RhZ3MvbWFzdGVyLTM",
+        "url": "https://api.github.com/repos/vegassor/test-git-flow/git/refs/tags/master-3",
+        "object": {
+            "sha": "3f9425936577e19faf5da43b0cb21fedc7ef38c1",
+            "type": "commit",
+            "url": "https://api.github.com/repos/vegassor/test-git-flow/git/commits/3f9425936577e19faf5da43b0cb21fedc7ef38c1"
+        }
+    },
+    {
+        "ref": "refs/tags/master-4",
+        "node_id": "REF_kwDOJQBAz7JyZWZzL3RhZ3MvbWFzdGVyLTQ",
+        "url": "https://api.github.com/repos/vegassor/test-git-flow/git/refs/tags/master-4",
+        "object": {
+            "sha": "6b5b8f399bba102d511ec059f01b6f6ca8db06f6",
+            "type": "commit",
+            "url": "https://api.github.com/repos/vegassor/test-git-flow/git/commits/6b5b8f399bba102d511ec059f01b6f6ca8db06f6"
+        }
+    },
+    {
+        "ref": "refs/tags/master-5",
+        "node_id": "REF_kwDOJQBAz7JyZWZzL3RhZ3MvbWFzdGVyLTU",
+        "url": "https://api.github.com/repos/vegassor/test-git-flow/git/refs/tags/master-5",
+        "object": {
+            "sha": "96f79eb907306433e21340341a11f5981022008d",
+            "type": "commit",
+            "url": "https://api.github.com/repos/vegassor/test-git-flow/git/commits/96f79eb907306433e21340341a11f5981022008d"
+        }
+    },
+    {
+        "ref": "refs/tags/master-6",
+        "node_id": "REF_kwDOJQBAz7JyZWZzL3RhZ3MvbWFzdGVyLTY",
+        "url": "https://api.github.com/repos/vegassor/test-git-flow/git/refs/tags/master-6",
+        "object": {
+            "sha": "e4fa32878ce4f61952b94b654a43936c1c0ce09a",
+            "type": "commit",
+            "url": "https://api.github.com/repos/vegassor/test-git-flow/git/commits/e4fa32878ce4f61952b94b654a43936c1c0ce09a"
+        }
+    },
+    {
+        "ref": "refs/tags/master-7",
+        "node_id": "REF_kwDOJQBAz7JyZWZzL3RhZ3MvbWFzdGVyLTc",
+        "url": "https://api.github.com/repos/vegassor/test-git-flow/git/refs/tags/master-7",
+        "object": {
+            "sha": "b0b6d74e025d7dc015e6455d76781c753a6cf21e",
+            "type": "commit",
+            "url": "https://api.github.com/repos/vegassor/test-git-flow/git/commits/b0b6d74e025d7dc015e6455d76781c753a6cf21e"
+        }
+    },
+    {
+        "ref": "refs/tags/master-8-revert-7",
+        "node_id": "REF_kwDOJQBAz7tyZWZzL3RhZ3MvbWFzdGVyLTgtcmV2ZXJ0LTc",
+        "url": "https://api.github.com/repos/vegassor/test-git-flow/git/refs/tags/master-8-revert-7",
+        "object": {
+            "sha": "c77bdae3ac86235b2a6c6c8ce7e238d211e2cadd",
+            "type": "commit",
+            "url": "https://api.github.com/repos/vegassor/test-git-flow/git/commits/c77bdae3ac86235b2a6c6c8ce7e238d211e2cadd"
+        }
+    },
+    {
+        "ref": "refs/tags/master-9",
+        "node_id": "REF_kwDOJQBAz7JyZWZzL3RhZ3MvbWFzdGVyLTk",
+        "url": "https://api.github.com/repos/vegassor/test-git-flow/git/refs/tags/master-9",
+        "object": {
+            "sha": "85cfce717c5c9d636f155715b17ef1d24170b35f",
+            "type": "commit",
+            "url": "https://api.github.com/repos/vegassor/test-git-flow/git/commits/85cfce717c5c9d636f155715b17ef1d24170b35f"
+        }
+    },
+    {
+        "ref": "refs/tags/master-10",
+        "node_id": "REF_kwDOJQBAz7NyZWZzL3RhZ3MvbWFzdGVyLTEw",
+        "url": "https://api.github.com/repos/vegassor/test-git-flow/git/refs/tags/master-10",
+        "object": {
+            "sha": "84137e007f7d02111c1cad230363f726e79f4435",
+            "type": "commit",
+            "url": "https://api.github.com/repos/vegassor/test-git-flow/git/commits/84137e007f7d02111c1cad230363f726e79f4435"
+        }
+    },
+    {
+        "ref": "refs/tags/master-11",
+        "node_id": "REF_kwDOJQBAz7NyZWZzL3RhZ3MvbWFzdGVyLTEx",
+        "url": "https://api.github.com/repos/vegassor/test-git-flow/git/refs/tags/master-11",
+        "object": {
+            "sha": "d9cd62c07ab3f2372650975831d770039172c959",
+            "type": "commit",
+            "url": "https://api.github.com/repos/vegassor/test-git-flow/git/commits/d9cd62c07ab3f2372650975831d770039172c959"
+        }
+    }
+]
