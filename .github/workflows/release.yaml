@@ -3,39 +3,55 @@ name: Check Release Target Commit
 on:
   release:
     types:
-      - created
+      - published
 
 jobs:
   verify-commit:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - name: Checkout master branch
-        uses: actions/checkout@v3
-        with:
-          ref: 'master'
-
-      - name: Dump github context for debug
-        env: 
-          context: ${{ toJSON(github) }}
-        run: echo "${context}"
-
-      - name: Get latest commit in master
-        id: get-latest-commit
+      - name: Check if event is release
+        if: github.event_name != 'release'
         run: |
-          latest_commit=$(git rev-parse HEAD)
-          echo "LATEST_COMMIT=${latest_commit}" >> ${GITHUB_OUTPUT}
-
-      - name: Compare commit SHA with release target
-        if: steps.get-latest-commit.outputs.latest_commit != github.sha
+          link="https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release"
+          echo "::error title=GitHub event is not 'release'::This workflow must be used only when 'release' triggers it.\n${link}"
+          exit 100
+      - name: Set envs for next steps
+        id: set-envs
         run: |
-          master_sha=${{steps.get-latest-commit.outputs.latest_commit}}
-          current_sha=${{github.sha}}
-          echo "::error ::Latest commit in master branch (${master_sha}) does not match commit chosen for release (${current_sha})"
-          exit 1
+          REPO=$(echo ${{github.repository}} | cut -d "/" -f2)
+          echo "REPO=${REPO}" >> "$GITHUB_ENV"
 
-      - name: Compare commit SHA with release target
-        if: github.event.release.target_commitish != 'master'
+          GIT_TAG=${GITHUB_REF#"refs/tags/"}
+          echo "GIT_TAG=${GIT_TAG}" >> "$GITHUB_ENV"
+        
+          TAG="master-montana-${{ github.run_number }}-${{ github.run_attempt }}"
+          echo "TAG=${TAG}" >> "$GITHUB_ENV"
+          echo "TAG=${TAG}" >> "$GITHUB_OUTPUT"
+
+      - name: Check if tag is montana-v*
         run: |
-          echo "::error ::Release target is not 'master' branch"
-          exit 2
+          if [[ ! "${GIT_TAG}" =~ ^"montana-v" ]]; then
+            msg="You have to specify tag name that starts with 'montana-v', when you create a release"
+            echo "::error title=Tag of the release is not montana-v*::${msg}"
+            exit 101
+          fi
+      - name: Check if release's target_commitish is master
+        run: |
+          target=${{github.event.release.target_commitish}}
+          if [[ "${target}" != "master" ]]; then
+            msg="You have to specify target: master, when you create a release"
+            echo "::error title=Target of the release is not master-v*::${msg}"
+            exit 102
+          fi
+      - name: Check if release's SHA is master
+        run: |
+          master_sha=$(gh api /repos/${{github.repository}}/commits/master | jq -r .sha)
+          release_sha=${{github.sha}}
+          if [[ "${release_sha}" != "${master_sha}" ]]; then
+            msg="You have to specify target: master, when you create a release"
+            echo "::error title=Release is not a latest master commit::${msg}"
+            exit 103
+          fi
