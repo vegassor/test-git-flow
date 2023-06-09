@@ -61,21 +61,29 @@ jobs:
         env:
           GH_TOKEN: ${{github.token}}
         run: |
-          checks="$(gh api /repos/${{github.repository}}/commits/${{github.sha}}/check-runs)"
+          check_suites="$(gh api /repos/${{github.repository}}/commits/${{github.sha}}/check-suites)"
 
-          echo "::group::GitHub API response"
-            echo "Commit checks:"
-            echo
-            echo "${checks}" | jq
+          echo "::group::GitHub API response (check suites)"
+          echo "${check_suites}" | jq
           echo "::endgroup::"
           
-          statuses="$(echo "${checks}" | jq -r '.check_runs[] | .conclusion')"
+          check_suites_urls="$(echo "${check_suites}" | jq -r '.check_suites[] | select(.head_branch == "master") | .url'"
 
-          while IFS= read -r status; do
-            if [[ "${status}" != "success" && "${status}" != "skipped" ]] ; then
-              commit_link="https://github.com/${{github.repository}}/commit/${{github.sha}}"
-              msg="One or more commit checks are not successful (${status}). See ${commit_link}"
-              echo "::error title=Commit is not successful::${msg}"
-              exit 104
-            fi
-          done <<< "${statuses}"
+          while IFS= read -r suite_url; do
+            checks="$(gh api "${suite_url}/checks-runs")"
+
+            echo "::group::GitHub API response (checks in suite ${suite_url})"
+            echo "${checks}" | jq
+            echo "::endgroup::"
+  
+            statuses="$(echo "${checks}" | jq -r '.check_runs[] | .conclusion')"
+
+            while IFS= read -r status; do
+              if [[ "${status}" != "success" && "${status}" != "skipped" ]] ; then
+                commit_link="https://github.com/${{github.repository}}/commit/${{github.sha}}"
+                msg="One or more commit checks are not successful (${status}). See ${commit_link}"
+                echo "::error title=Commit is not successful::${msg}"
+                exit 104
+              fi
+            done <<< "${statuses}"
+          done <<< "${check_suites_urls}"

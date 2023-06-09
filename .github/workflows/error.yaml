@@ -1,4 +1,4 @@
-name: Check Release Target Commit
+name: Fail
 on:
   push:
 jobs:
