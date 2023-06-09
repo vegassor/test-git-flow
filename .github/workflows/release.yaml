@@ -57,3 +57,25 @@ jobs:
             echo "::error title=Release is not a latest master commit::${msg}"
             exit 103
           fi
+      - name: Check if commit checks are green
+        env:
+          GH_TOKEN: ${{github.token}}
+        run: |
+          checks="$(gh api /repos/${{github.repository}}/commits/${{github.sha}}/check-runs)"
+
+          echo "::group::GitHub API response"
+            echo "Commit checks:"
+            echo
+            echo "${checks}" | jq
+          echo "::endgroup::"
+          
+          statuses="$(echo "${checks}" | jq -r '.check_runs[] | .conclusion')"
+
+          while IFS= read -r status; do
+            if [[ "${status}" != "success" && "${status}" != "skipped" ]] ; then
+              commit_link="https://github.com/${{github.repository}}/commit/${{github.sha}}"
+              msg="One or more commit checks are not successful (${status}). See ${commit_link}"
+              echo "::error title=Commit is not successful::${msg}"
+              exit 104
+            fi
+          done <<< "${statuses}"
