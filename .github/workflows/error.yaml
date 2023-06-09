@@ -1,0 +1,10 @@
+name: Check Release Target Commit
+on:
+  push:
+jobs:
+  fail:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail
+        run: |
+          exit 1
