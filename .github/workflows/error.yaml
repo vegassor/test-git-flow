@@ -9,4 +9,7 @@ jobs:
     steps:
       - name: Fail
         run: |
-          exit 1
+          rand=$(shuf -i 0-1 -n 1)
+          if [[ $rand == "0" ]]; then
+            exit 1
+          fi
