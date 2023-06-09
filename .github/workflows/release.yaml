@@ -67,12 +67,12 @@ jobs:
           echo "${check_suites}" | jq
           echo "::endgroup::"
           
-          check_suites_urls="$(echo "${check_suites}" | jq -r '.check_suites[] | select(.head_branch == "master") | .url'"
+          check_suites_ids="$(echo "${check_suites}" | jq -r '.check_suites[] | select(.head_branch == "master") | .id'"
 
-          while IFS= read -r suite_url; do
-            checks="$(gh api "${suite_url}/checks-runs")"
+          while IFS= read -r suite_id; do
+            checks="$(gh api "repos/${{github.repository}}/check-suites/${suite_id}")"
 
-            echo "::group::GitHub API response (checks in suite ${suite_url})"
+            echo "::group::GitHub API response (checks in suite ${suite_id})"
             echo "${checks}" | jq
             echo "::endgroup::"
   
@@ -86,4 +86,4 @@ jobs:
                 exit 104
               fi
             done <<< "${statuses}"
-          done <<< "${check_suites_urls}"
+          done <<< "${check_suites_ids}"

@@ -1,6 +1,8 @@
 name: Fail
 on:
   push:
+    branches:
+      - master
 jobs:
   fail:
     runs-on: ubuntu-latest
