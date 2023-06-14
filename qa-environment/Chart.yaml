@@ -1,0 +1,24 @@
+apiVersion: v2
+name: qa-environment
+description: A Helm chart for Kubernetes
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
+
+
+dependencies:
+- name: helm-uls
+  repository: "oci://1111111111.dkr.ecr.us-east-1.amazonaws.com"
+  version: "v5.1-master"
+  alias: uls
+  condition: uls.enabled
+- name: helm-uls-component
+  repository: "oci://11111111111.dkr.ecr.us-east-1.amazonaws.com"
+  version: "v5.1-master"
+  alias: file-writer
+  condition: file-writer.enabled
+- name: helm-uls-component
+  repository: "oci://11111111111.dkr.ecr.us-east-1.amazonaws.com"
+  version: "v7.1-master"
+  alias: file-sender
+  condition: file-sender.enabled
