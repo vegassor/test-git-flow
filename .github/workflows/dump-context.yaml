@@ -8,4 +8,4 @@ jobs:
     steps:
       - name: Dump
         run: |
-          echo '${{ fromJSON(github) }}'
+          echo '${{ toJSON(github) }}'
