@@ -3,13 +3,16 @@ on:
   push:
 jobs:
   dump:
+    permissions:
+      contents: read
+      id-token: write
     environment: master
     runs-on: ubuntu-latest
     steps:
-      - name: Dump
+      - name: Dump ctx
         run: |
           echo '${{ toJSON(github) }}'
-      - name: Dump
+      - name: Dump envs
         run: |
           echo $ACTIONS_ID_TOKEN_REQUEST_URL
           echo $ACTIONS_ID_TOKEN_REQUEST_TOKEN
