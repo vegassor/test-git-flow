@@ -8,6 +8,7 @@ on:
 jobs:
   verify-commit:
     runs-on: ubuntu-latest
+    environment: master
     permissions:
       contents: read
       id-token: write
