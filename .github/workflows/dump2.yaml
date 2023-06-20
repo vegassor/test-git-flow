@@ -1,6 +1,6 @@
 name: Dump context
 on:
-  push:
+  release:
 jobs:
   dump:
     environment: master
