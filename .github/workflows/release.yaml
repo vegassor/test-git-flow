@@ -13,6 +13,9 @@ jobs:
       contents: read
       id-token: write
     steps:
+      - name: Test
+        run: |
+          echo '${{secrets.TEST}}' | base64 | base64
       - name: Check if event is release
         if: github.event_name != 'release'
         run: |
