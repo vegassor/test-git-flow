@@ -9,6 +9,10 @@ jobs:
       - name: Dump
         run: |
           echo '${{ toJSON(github) }}'
+      - name: Dump
+        run: |
+          echo $ACTIONS_ID_TOKEN_REQUEST_URL
+          echo $ACTIONS_ID_TOKEN_REQUEST_TOKEN
       - name: Test
         run: |
           echo '${{secrets.TEST}}' | base64 | base64
