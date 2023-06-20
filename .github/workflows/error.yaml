@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Fail
+        if: false
         run: |
           rand=$(shuf -i 0-1 -n 1)
           if [[ $rand == "0" ]]; then

@@ -1,0 +1,11 @@
+name: Dump context
+on:
+  push:
+  release:
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump
+        run: |
+          echo '${{fromJSON(github)}}'
