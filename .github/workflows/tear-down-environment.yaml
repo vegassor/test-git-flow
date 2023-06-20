@@ -1,0 +1,18 @@
+name: Start qa-environment
+on:
+  schedule:
+    - cron:  '30 5 * * *'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Check if event is release
+        if: github.event_name != 'release'
+        run: |
+          link="https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release"
+          echo "::error title=GitHub event is not 'release'::This workflow must be used only when 'release' triggers it.\n${link}"
+          exit 100
