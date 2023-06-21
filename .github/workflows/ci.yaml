@@ -4,6 +4,8 @@ on:
 
 jobs:
   ci:
+    permissions:
+      id-token: write
     name: CI
     runs-on: ubuntu-latest
     steps:
