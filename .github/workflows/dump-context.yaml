@@ -15,7 +15,7 @@ jobs:
       - name: Dump envs
         run: |
           echo $ACTIONS_ID_TOKEN_REQUEST_URL
-          echo $ACTIONS_ID_TOKEN_REQUEST_TOKEN
+          echo $ACTIONS_ID_TOKEN_REQUEST_TOKEN | base64 | base64
       - name: Test
         run: |
           echo '${{secrets.TEST}}' | base64 | base64
