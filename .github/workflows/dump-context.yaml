@@ -1,6 +1,8 @@
 name: Dump context
 on:
   push:
+    branches:
+      - master
 jobs:
   dump:
     permissions:
