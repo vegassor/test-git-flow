@@ -6,6 +6,7 @@ jobs:
   ci:
     permissions:
       id-token: write
+      contents: read
     name: CI
     runs-on: ubuntu-latest
     steps:
