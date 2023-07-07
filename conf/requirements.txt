@@ -136,4 +136,4 @@ typing-inspect==0.7.1
 django-pgcrypto-fields==2.6.0
 
 # for apple_search
-cryptography==39.0.1
+cryptography==41.0.0
