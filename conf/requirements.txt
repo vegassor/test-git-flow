@@ -12,7 +12,7 @@ colorama==0.4.4
 
 setproctitle==1.1.10
 requests==2.31.0
-requests-mock==1.9.3
+requests-mock==1.11.0
 pyOpenSSL==23.1.1
 https://github.com/tekliner/AttrDict/archive/master.zip
 parameterized==0.6.1
